@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>document</title>
+        <style>
+            body{
+                background-color: orange;
+            }
+            div{
+                width: 500px;
+                text-align: center;
+                box-shadow: 0 0 10px violet;
+                margin: 100px auto;
+                padding: 30px;
+                background-color: aqua;
+
+            }
+        </style>
+        <script>
+            function fnCreateElement(){
+      var inputValue =  document.getElementById('i1').value;
+//create new p element
+var pRef = document.createElement("span"); 
+pRef.append(inputValue);
+pRef.style.color="green";
+pRef.style.marginRight="10px";
+var btnEdit = document.createElement("button");
+btnEdit.innerText="Edit";
+btnEdit.style.marginRight="10px";
+//edit the paragraph
+btnEdit.addEventListener('click',function(){pRef.contentEditable=true;})
+var btnDelete = document.createElement("button");
+btnDelete.innerText="Delete";
+btnDelete.style.marginRight="10px";
+//delete all thing
+btnDelete.addEventListener('click',function(){pRef.remove();})
+btnDelete.addEventListener('click',function(){btnEdit.remove();})
+btnDelete.addEventListener('click',function(){btnDelete.remove();})
+
+var br = document.createElement("br");
+document.querySelector("body").appendChild(pRef);
+document.querySelector("body").appendChild(btnEdit);
+document.querySelector("body").appendChild(btnDelete);
+document.querySelector("body").appendChild(br);
+
+            }
+        </script>
+
+    </head>
+    <body>
+        <div>
+            <h2>TO DO LIST</h2>
+          ENTER TEXT:  <input type="text" id="i1">
+            <button onclick="fnCreateElement()">add new element</button>
+        </div>
+    </body>
+</html>
